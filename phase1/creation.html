@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Add to Discussion</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="dist/slippry.min.js"></script>
+	<link href="css/bootstrap.css" rel="stylesheet" />
+	<link href="color/default.css" rel="stylesheet">
+	<link href="dist/slippry.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- HEADER MENU -->
+    <header>
+        <div id="navigation" class="navbar navbar-inverse navbar-fixed-top default" role="navigation">
+          <div class="container">
+
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="index.html#forum">Tapat</a>
+            </div>
+    
+            <div class="navigation">
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <nav>
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="current"><a href="#intro" class="sliding-link inactiveLink"><text style="color: #CC010101;">Home</text></a></li>
+                    <li><a href="#about" class="sliding-link inactiveLink"><text style="color: #CC010101;">Home</text></a></li>
+					<li><a href="#officers" class="sliding-link inactiveLink"><text style="color: #CC010101;">Home</text></a></li>
+					<li><a href="#forum" class="sliding-link inactiveLink"><text style="color: #CC010101;">Home</text></a></li>
+                    <li><a href="#contact" class="sliding-link inactiveLink"><text style="color: #CC010101;">Home</text></a></li>
+                  </ul>
+                </nav>
+              </div>
+
+            </div>
+    
+          </div>
+        </div>
+    
+    </header>
+    <!-- END HEADER MENU -->
+
+	<!-- ABOUT US -->
+	<section id="signup">
+        <div class="signpic"></div>
+        <div class="signtext">
+            <h2 style="color:#dbdbdb; font-size: 24px;">Always for a Just and Free Society</h2><br>
+            <h4 style="color: #dbdbdb; font-size: 16px;">Add to our discussions and please be patient as the administrator will check this post before posting</h4>
+            <form style="color: #dbdbdb; margin-top: 7vh;" id="create">
+                <label>Discussion Title</label>
+                <input type="text" placeholder="Title (e.g. [Martial Law] Why many people hate Marcos?)" id="dtitle">
+                <label>Discussion Tags (Separated by a comma)</label>
+                <input type="text" placeholder="Tags (e.g. Martial Law, Marcos, Imelda)" id="dtags">
+                <label>Article</label>
+                <textarea name="darticle" id="newarticle" placeholder="Write your discussion here...."></textarea>
+                <input type="button" class="logbutton" value="SUBMIT">
+            </form>
+        </div>
+    </section>
+
+</body>
+</html>

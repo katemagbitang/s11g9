@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Page dedicated to Alyansang Tapat sa Lasallista">
+	<meta name="author" content="Carlo Santos, Julianne Magbitang, Gabriel Marcelo">
+	<title>Alyansang Tapat Sa Lasallista</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="dist/slippry.min.js"></script>
+	<link href="css/bootstrap.css" rel="stylesheet" />
+	<link href="color/default.css" rel="stylesheet">
+	<link href="dist/slippry.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- HEADER MENU -->
+    <header>
+        <div id="navigation" class="navbar navbar-inverse navbar-fixed-top default" role="navigation">
+          <div class="container">
+
+            <div class="navbar-header">
+              <a class="navbar-brand" href="index.html">Tapat</a>
+            </div>
+    
+            <div class="navigation">
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <nav>
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="current"><a href="#intro" class="sliding-link">Home</a></li>
+                    <li><a href="#about" class="sliding-link">About</a></li>
+					<li><a href="#officers" class="sliding-link">Officers</a></li>
+					<li><a href="#forum" class="sliding-link">Forum</a></li>
+                    <li><a href="#login" class="sliding-link">Login</a></li>
+                  </ul>
+                </nav>
+              </div>
+
+            </div>
+    
+          </div>
+        </div>
+    
+    </header>
+    <!-- END HEADER MENU -->
+
+	<!-- INTRO -->
+	<section id="intro">
+		<ul id="demo1">
+			<li><a href="#slide1" class="inactiveLink"><img src="img/slide/1.jpg"></a></li>
+			<li><a href="#slide2" class="inactiveLink"><img src="img/slide/2.jpg"></a></li>
+			<li><a href="#slide3" class="inactiveLink"><img src="img/slide/3.jpg"></a></li>
+			<li><a href="#slide4" class="inactiveLink"><img src="img/slide/4.jpg"></a></li>
+			<li><a href="#slide5" class="inactiveLink"><img src="img/slide/6.jpg"></a></li>
+			<li><a href="#slide6" class="inactiveLink"><img src="img/slide/1.png"></a></li>
+		</ul>
+	</section>
+
+	<script>
+		$(function() {
+			var demo1 = $("#demo1").slippry({
+				// transition: 'vertical',
+				// useCSS: true,
+				// speed: 1000,
+				// pause: 3000,
+				// auto: true,
+				// preload: 'visible',
+				// autoHover: false
+			});	});
+
+		$(".sliding-link").click(function(e) {
+			e.preventDefault();
+			var aid = $(this).attr("href");
+			$('html,body').animate({scrollTop: $(aid).offset().top},'slow');
+		});
+	</script>
+	<!-- END INTRO -->
+
+	<!-- ABOUT US -->
+	<section id="about">
+		<div id="abouttext">
+			<h2>Alyansang TAPAT sa Lasallista</h2><br><br>
+			<h4>is a <text class="highlight">PROGRESSIVE</text> political organization in the University. We are an organization embodying the creed of creating a <text class="highlight">PRO-STUDENT</text> and <text class="highlight">PRO-PEOPLE</text> student government.
+				During the height of student activism in La Salle, Alyansang <text class="highlight">TAPAT</text> sa Lasallista was established during the Marcos regime. Tapat was born out of an alliance of organizations and individuals who believe in the power of active student participation for a common vision.
+			</h4>
+		</div>
+	</section>
+	<!-- END ABOUT US -->
+	
+	<!-- OFFICERS -->
+	<section id="officers">
+		<div class="title">
+			<h2 style="color:#2f2f2f; font-size: 40px;">Officers</h2>
+		</div>
+		<div id="officerwrap">
+			<div class="officer">
+				<div class="officepic" id="pres"></div>
+				<div class="officetext">
+					<text class="officename">Ken Azcarraga</text>
+					<text class="officedesc">President</text>
+				</div>
+				<div class="medialinks">
+					<ul class="social-profile">
+						<li><a href="#"><img src="https://img.icons8.com/android/18/000000/facebook-new.png"></a></li>
+						<li><a href="#"><img src="https://img.icons8.com/android/18/000000/twitter.png"></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="officer">
+				<div class="officepic" id="inter"></div>
+				<div class="officetext">
+					<text class="officename">JM Cifra</text>
+					<text class="officedesc">Vice President of Internal Affairs</text>
+				</div>
+				<div class="medialinks">
+					<ul class="social-profile">
+						<li><a href="#"><img src="https://img.icons8.com/android/18/000000/facebook-new.png"></a></li>
+						<li><a href="#"><img src="https://img.icons8.com/android/18/000000/twitter.png"></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="officer">
+				<div class="officepic" id="exter"></div>
+				<div class="officetext">
+					<text class="officename">Paolo Driz</text>
+					<text class="officedesc">Vice President of External Affairs</text>
+				</div>
+				<div class="medialinks">
+					<ul class="social-profile">
+						<li><a href="#"><img src="https://img.icons8.com/android/18/000000/facebook-new.png"></a></li>
+						<li><a href="#"><img src="https://img.icons8.com/android/18/000000/twitter.png"></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="officer">
+				<div class="officepic" id="legal"></div>
+				<div class="officetext">
+					<text class="officename">JV Fernandez</text>
+					<text class="officedesc">Vice President of Legal Affairs</text>
+				</div>
+				<div class="medialinks">
+					<ul class="social-profile">
+						<li><a href="#"><img src="https://img.icons8.com/android/18/000000/facebook-new.png"></a></li>
+						<li><a href="#"><img src="https://img.icons8.com/android/18/000000/twitter.png"></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="officer">
+				<div class="officepic" id="ops"></div>
+				<div class="officetext">
+					<text class="officename">Raeman Corpuz</text>
+					<text class="officedesc">Vice President of Operations</text>
+				</div>
+				<div class="medialinks">
+					<ul class="social-profile">
+						<li><a href="#"><img src="https://img.icons8.com/android/18/000000/facebook-new.png"></a></li>
+						<li><a href="#"><img src="https://img.icons8.com/android/18/000000/twitter.png"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</section>
+	<!-- END OFFICERS -->
+	
+	<!-- FORUM -->
+	<section id="forum">
+		<div class="title">
+			<h2 style="color:#2f2f2f; font-size: 40px;">Forum</h2>
+			<h4 style="color: #2f2f2f; width: 60%;">Alyansang Tapat Sa Lasallista believes in a lot of things, and one of them is that through Unity and Collective Effort we can achieve greatness. Join us in various discussions that tackle different political issues and society in general.</h4>
+			<div style="display: flex;align-items: center;justify-content: center;flex-direction: row;width:20%;">
+				<img src="https://img.icons8.com/ios/25/992525/plus.png">
+				<h4 style="color: #992525; width: 60%;"><a href="creation.html">Add a discussion</a></h4>
+			</div>
+			<div style="min-width:80%;">
+				<input type="text" placeholder="  Search posts using tags" id="search" style="width: 100%;height:5vh;font-family: 'Lato';">
+			</div>
+		</div>
+		
+		
+		<div id="forumwrap">
+			<a href="forum1.html"><div class="itm msrItem" style="background-color: #405e40;">[Martial Law] What if Marcos never declared Martial Law?</div></a>
+			<a href="forum2.html"><div class="itm msrItem" style="background-color: #5e404f;">[SOGIE Bill] Why are so many against SOGIE Bill?</div></a>
+			<a href="forum3.html"><div class="itm msrItem" style="background-color: #40465e;">[ABS-CBN Shutdown] What's your opinion of the impending closure?</div></a>
+		</div>
+		
+
+	</section>
+	<!-- END FORUM -->
+
+	<!-- LOGIN -->
+	<section id="login">
+		<div class="title" style="padding-bottom: 10vh">
+			<h2 style="color:#2f2f2f; font-size: 40px;">Login</h2>
+			<h4 style="color: #2f2f2f;">Join the discussions in the forum</h4>
+		</div>
+		<div>
+			<form>
+				<label style="font-family: 'Lato';font-weight: 400;">Username: </label> <input type="text" placeholder="Username">
+				<label></label>
+				<label style="font-family: 'Lato';font-weight: 400;">Password: </label> <input type="password" placeholder="Password">
+				<input type="button" class="logbutton" value="LOGIN">
+				<label style="font-family: 'Lato'; font-weight: 400;text-align: center;"> OR </label>
+			</form>
+			<a href="signup.html"><button class="logbutton">SIGNUP</button></a>
+		</div>
+	</section>
+	<!-- END LOGIN -->
+
+	<script src="script/masonry.min.js"></script>
+	<script>
+		var time = undefined;
+		$(function(){
+			//init
+			$('#forumwrap').msrItems({
+				'colums': 3, //columns number
+				'margin': 15 //right and bottom margin
+			});
+
+			//update columns size on window resize
+			$( window ).on('resize', function(e) {
+				clearTimeout(time);
+				time = setTimeout(function(){
+					$('#forumwrap').msrItems('refresh');
+				}, 200);
+			})
+
+			// //load new elements(without updating existing)
+			// $('#forumwrap').msrItems('doload', [
+			// 	'<div class="itm msrItem"></div>',
+			// 	'<div class="itm msrItem"></div>',
+			// 	'<div class="itm msrItem"></div>'
+			// ]);
+		});
+	</script>
+
+
+<!--
+References:
+Inspired by https://codepen.io/bennettfeely/pen/CGFEs for the upvote/downvote buttons
+Forum grid inspired by https://www.jqueryscript.net/layout/Minimalist-Masonry-style-Grid-Layout-Plugin-Masonry-js.html
+Slippry Plugin http://slippry.com/
+Inspired by Groovin Bootstrap Theme
+-->
+</body>
+</html>

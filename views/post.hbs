@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{>head}}
+</head>
+<body>
+
+    <!-- HEADER MENU -->
+    {{>navbarnone}}
+    <!-- END HEADER MENU -->
+
+	<section id="post" style="height: auto;background-image: url(img/martial.jpg);">
+		<div class="posttitle">
+            <text class="forumtitle">{{forumtitle}}</text>
+            <text class="forumdate">{{forumdate}}</text>
+            <text class="forumauthor">By {{forumauthor}}</text>
+        </div>
+        <div class="contentwrap">
+            <div class="content">
+                <div class="ogpost">
+                  {{forumpost}}
+                  <div class="vote circle">
+                    <div class="increment up"></div>
+                    <div class="count">{{forumreact}}</div>
+                    <div class="increment down"></div>
+                  </div>
+                  <div>
+                    <a href="#">Edit</a> | <a href="#">Delete</a>
+                  </div>
+                </div>
+                <div class="commentwrap">
+                    <div class="poststats">
+                        {{commentcount}} Comment/s
+                    </div>
+                    {{>comment username='forgivenotforget' commentreact=4 commentcontent="<p>If someone wants to remove the possibility of Marcos declaring Martial Law was to have him rein in spending during 1969 presidential campaign period. At that time when Marcos was gunning for the second term, he essentially bribed provinces which he would not have won (Cebu in particular) through reckless dole outs to voters. When Marcos defeated Serging Osmeña (father of Tommy), the Central Bank had to devalue the peso due to skyrocketing inflation and skyrocketing inflation became the ultimate fertile ground for the Left (headed by Joma Sison) to destabilize Marcos regime and in return, the latter had to suspend writ of Habeas Corpus and declared Martial Law to supposedly suppress Maoist rebellion.</p>
+                          <p>If President Marcos never recklessly spent during the 1969 presidential campaign, inflation would have not skyrocketed and much stable Philippine economy in 1970 would have dissuaded any rebellions against his regime and would have ended his term by December 30, 1973 without bloodshed.
+                            It would be likely that the successor of FM would be Imelda or JPE from the Nacionalista Party and Ninoy or Gerry Roxas, Sr. from the Liberal Party.</p>"}}
+                    {{>comment username='neverforget' commentreact=9999 commentcontent='I wish Marcos was never elected.'}}
+                    <hr style="border: 1px solid #d3d3d3; width: 100%;">
+                    <div class="comment">
+                        <div class="usercomment">Your Name (change to current username)</div>
+                        <form class="newcommentform">
+                            <input type="text" id="newcomment" name="newcom" class="contentcomment" placeholder="Write your comment here....">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<script src="../../script/masonry.min.js"></script>
+	<script>
+		var time = undefined;
+		$(function(){
+			//init
+			$('#forumwrap').msrItems({
+				'colums': 3, //columns number
+				'margin': 15 //right and bottom margin
+			});
+
+			//update columns size on window resize
+			$( window ).on('resize', function(e) {
+				clearTimeout(time);
+				time = setTimeout(function(){
+					$('#forumwrap').msrItems('refresh');
+				}, 200);
+			})
+
+			// //load new elements(without updating existing)
+			// $('#forumwrap').msrItems('doload', [
+			// 	'<div class="itm msrItem"></div>',
+			// 	'<div class="itm msrItem"></div>',
+			// 	'<div class="itm msrItem"></div>'
+			// ]);
+		});
+</script>
