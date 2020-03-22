@@ -14,7 +14,12 @@
                     <li><a href="#about" class="sliding-link">About</a></li>
                     <li><a href="#officers" class="sliding-link">Officers</a></li>
                     <li><a href="#forum" class="sliding-link">Forum</a></li>
-                    <li><a href="#login" class="sliding-link">Login</a></li>
+                    {{#if UserLogged}}
+                      <li><a href="#editprof" class="sliding-link">Edit Profile</a></li>
+                    {{else}}
+                      <li><a href="#login" class="sliding-link">Login</a></li>
+                    {{/if}}
+                    
                   </ul>
                 </nav>
               </div>

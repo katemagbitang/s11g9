@@ -26,7 +26,11 @@
 	<!-- END FORUM -->
 
 	<!-- LOGIN -->
-	{{>login}}
+	{{#if UserLogged}}
+		{{>editprofile}}
+	{{else}}
+		{{>login}}
+	{{/if}}
 	<!-- END LOGIN -->
 
 	{{>script}}
