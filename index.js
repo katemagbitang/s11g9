@@ -4,8 +4,22 @@ const mongoose = require('mongoose')
 const app = express()
 const port = 9090
 
-mongoose.connect('mongodb://localhost/nodekb')
-let db = mongoose.connection;
+mongoose.connect('mongodb://localhost/nodekb', {useNewUrlParser: true, useUnifiedTopology: true});
+var db = mongoose.connection;
+
+//check connection
+db.once('open', function(){
+    console.log('Connected to MongoDB');
+});
+
+//check for db errors
+db.on('error', function(err){
+    console.log(err);
+})
+
+//Bring in Models
+let Post = require('./model/model-schema');
+
 
 app.set('view engine', 'hbs')
 
@@ -31,7 +45,15 @@ app.get('/create_post', function(req,res){
     res.render('createpost',{})
 })
 app.get('/viewall_post', function(req,res){
-    res.render('viewallpost',{})
+    Post.find({}, function(err, posts){
+        if(err){
+            console.log(err);
+        } else{
+            res.render('viewallpost',{
+
+            })
+        }
+    });
 })
 
 app.get('/post/:id(\d+)', function(req,res){
