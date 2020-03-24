@@ -21,11 +21,12 @@
             
             
             <div id="forumwrap">
-                {{>forumpost forumtitle="[Martial Law] What if Marcos never declared Martial Law?" id=1}}
+                {{#each posts}}
+                    {{>forumpost}}
+                {{/each}}
+                {{!-- {{>forumpost forumtitle="[Martial Law] What if Marcos never declared Martial Law?" id=1}}
                 {{>forumpost forumtitle="[SOGIE Bill] Why are so many against SOGIE Bill?" id=2}}
-                {{>forumpost forumtitle="[ABS-CBN Shutdown] What's your opinion of the impending closure?" id=3}}
-                {{>forumpost forumtitle="[Martial Law] What if Marcos never declared Martial Law?" id=1}}
-                {{>forumpost forumtitle="[Martial Law] What if Marcos never declared Martial Law?" id=1}}
+                {{>forumpost forumtitle="[ABS-CBN Shutdown] What's your opinion of the impending closure?" id=3}} --}}
             </div>
             
 
@@ -43,3 +44,13 @@ Inspired by Groovin Bootstrap Theme
 -->
 </body>
 </html>
+
+{
+"postNumber": 1, 
+"username":"carlobear" ,
+"title":"What if Marcos never declared Martial Law?", 
+"postText":"What if Marcos never declared Martial Law and stepped down in '73? Would we have seen a President Ninoy Aquino? Would we have been a vastly different country today (socially and/or economically), or would it be more of the same? I'd like to know your thoughts on this.", 
+"likes": 999, 
+"status": "Approved", 
+"photo": "url something"
+}

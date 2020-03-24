@@ -50,27 +50,30 @@ app.get('/viewall_post', function(req,res){
             console.log(err);
         } else{
             res.render('viewallpost',{
-
+                posts: posts
             })
         }
     });
 })
 
-app.get('/post/:id(\d+)', function(req,res){
-    res.render('post',{
-        ids: req.params.id,
-    })
+app.get('/post/:id', function(req,res){
+    Post.findOne({postNumber: req.params.id }, function(err, posts){
+        if(err){
+            console.log(err);
+        } else{
+            console.log(req.params.id);
+            res.render('post',{
+                forumtitle: posts.title,
+                forumdate: posts.postDate,
+                forumauthor: posts.username,
+                forumpost: posts.postText,
+                forumreact: 999,
+                commentcount: 2
+            });
+        }
+    });
 })
-app.get('/post', function(req,res){
-    res.render('post',{
-        forumtitle: '[Martial Law] What if Marcos never declared Martial Law?',
-        forumdate: 'February 28, 2020',
-        forumauthor: 'Carlobear',
-        forumpost:"What if Marcos never declared Martial Law and stepped down in '73? Would we have seen a President Ninoy Aquino? Would we have been a vastly different country today (socially and/or economically), or would it be more of the same? I'd like to know your thoughts on this.",
-        forumreact: 999,
-        commentcount: 2
-    })
-})
+
 app.listen(port, function(){
     console.log('App listening at port ' + port)
 })
