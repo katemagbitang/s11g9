@@ -18,7 +18,9 @@ db.on('error', function(err){
 })
 
 //Bring in Models
-let Post = require('./model/model-schema');
+let Post = require('./model/post-model');
+let Comment = require('./model/comment-model');
+let User = require('./model/user-model');
 
 
 app.set('view engine', 'hbs')
@@ -67,7 +69,7 @@ app.get('/post/:id', function(req,res){
                 forumdate: posts.postDate,
                 forumauthor: posts.username,
                 forumpost: posts.postText,
-                forumreact: 999,
+                forumreact: posts.like,
                 commentcount: 2
             });
         }

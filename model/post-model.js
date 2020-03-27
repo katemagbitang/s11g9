@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
+
   const postSchema = new Schema({
     postNumber:{
         type: Number,
@@ -8,7 +9,7 @@ var Schema = mongoose.Schema;
         required: [true, 'Required']
     },
     username: {
-        type : String,
+        type : [{ type: Schema.Types.ObjectId, ref: 'User' }],
         required: [true, 'Required']
     },
     title: {
@@ -22,9 +23,15 @@ var Schema = mongoose.Schema;
     postDate: {
         type : { type: Date, default: Date.now() }
     },
-    likes:{
+    tags:[{type: Schema.Types.ObjectId, 
+        ref: 'Tag'}],
+    reacts:{
         type: Number
     },
+    comments:[{ 
+        type: Schema.Types.ObjectId, 
+        ref: 'Comment' 
+      }],
     status:{
         type: String,
         enum: ['Pending','Approved']
@@ -34,5 +41,5 @@ var Schema = mongoose.Schema;
         required: [true, 'Required']
     }
   });
-  
-  var Post = module.exports = mongoose.model('Post',postSchema);
+
+  module.exports = mongoose.model('Post',postSchema);

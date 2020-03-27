@@ -1,0 +1,6 @@
+place this folder sa mp
+
+tas on the main index.js (where all the requests are), place a line na 
+"var dbmodel = require('./model');"
+
+idk no errors naman sa side ko + i changed some data types AND has one "field" na lang to combine likes and dislikes (its now called reacts)
