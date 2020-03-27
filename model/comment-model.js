@@ -9,11 +9,11 @@ var Schema = mongoose.Schema;
         required: [true,'Required']
     },
     postNumber:{
-        type: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
-        required: [true, 'Required']
+      type: Number,
+      required: [true, 'Required']
     },
     username:{
-        type: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+        type: String,
         required: [true,'Required']
     },
     commentText: {

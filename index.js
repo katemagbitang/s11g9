@@ -59,21 +59,40 @@ app.get('/viewall_post', function(req,res){
 })
 
 app.get('/post/:id', function(req,res){
-    Post.findOne({postNumber: req.params.id }, function(err, posts){
+    // Post.findOne({postNumber: req.params.id }, function(err, posts){
+    //     if(err){
+    //         console.log(err);
+    //     } else{
+    //         console.log(req.params.id);
+    //         res.render('post',{
+    //             forumtitle: posts.title,
+    //             forumdate: posts.postDate,
+    //             forumauthor: posts.username,
+    //             forumpost: posts.postText,
+    //             forumreact: posts.like,
+    //             commentcount: 2
+    //         });
+    //     }
+    // });
+
+    Post.findOne({postNumber: req.params.id })
+    .populate('comments').populate('username')
+    .exec(function(err,posts){
         if(err){
             console.log(err);
         } else{
-            console.log(req.params.id);
+            console.log(posts.comments);
             res.render('post',{
                 forumtitle: posts.title,
                 forumdate: posts.postDate,
-                forumauthor: posts.username,
+                forumauthor: posts.username.username,
                 forumpost: posts.postText,
                 forumreact: posts.like,
-                commentcount: 2
+                commentcount: 2,
+                comments: posts.comments
             });
         }
-    });
+    })
 })
 
 app.listen(port, function(){

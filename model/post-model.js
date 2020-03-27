@@ -9,7 +9,8 @@ var Schema = mongoose.Schema;
         required: [true, 'Required']
     },
     username: {
-        type : [{ type: Schema.Types.ObjectId, ref: 'User' }],
+        type: Schema.Types.ObjectId,
+        ref: "User",
         required: [true, 'Required']
     },
     title: {
@@ -23,8 +24,8 @@ var Schema = mongoose.Schema;
     postDate: {
         type : { type: Date, default: Date.now() }
     },
-    tags:[{type: Schema.Types.ObjectId, 
-        ref: 'Tag'}],
+    // tags:[{type: Schema.Types.ObjectId, 
+    //     ref: 'Tag'}],
     reacts:{
         type: Number
     },
