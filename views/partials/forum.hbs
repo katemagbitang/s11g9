@@ -10,9 +10,9 @@
     
     
     <div id="forumwrap">
-        {{>forumpost forumtitle="[Martial Law] What if Marcos never declared Martial Law?" id=1}}
-        {{>forumpost forumtitle="[SOGIE Bill] Why are so many against SOGIE Bill?" id=2}}
-        {{>forumpost forumtitle="[ABS-CBN Shutdown] What's your opinion of the impending closure?" id=3}}
+        {{#each posts}}
+            {{>forumpost}}
+        {{/each}}
     </div>
     <input class="buttonhover" type="button" onClick="window.location.href = '/viewall_post';" value="View All Posts"></input>
     

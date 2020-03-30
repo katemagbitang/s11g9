@@ -30,9 +30,11 @@ var Schema = mongoose.Schema;
         type: Number
     },
     comments:[{ 
-        type: Schema.Types.ObjectId, 
-        ref: 'Comment' 
-      }],
+        postNumber: {type: Number, required: [true,'Required']},       
+        username: {type: String, required: [true,'Required']},
+        commentText: {type: String, required: [true,'Required']},
+        reacts: {type: Number, required: [true,'Required']}    
+    }],
     status:{
         type: String,
         enum: ['Pending','Approved']

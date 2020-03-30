@@ -38,7 +38,19 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.use(express.static(__dirname + '/public'));
 var usernames= "Default";
 var ids= "Default";
-app.get('/', function(req,res){res.render('index',{})})
+app.get('/', function(req,res){
+
+    Post.find({}, function(err, posts){
+        if(err){
+            console.log(err);
+        } else{
+            res.render('index',{
+                posts: posts
+            })
+        }
+    }).sort( { _id : -1 } ).limit(3);
+
+})
 
 app.get('/signup', function(req,res){
     res.render('registration',{})
@@ -59,24 +71,9 @@ app.get('/viewall_post', function(req,res){
 })
 
 app.get('/post/:id', function(req,res){
-    // Post.findOne({postNumber: req.params.id }, function(err, posts){
-    //     if(err){
-    //         console.log(err);
-    //     } else{
-    //         console.log(req.params.id);
-    //         res.render('post',{
-    //             forumtitle: posts.title,
-    //             forumdate: posts.postDate,
-    //             forumauthor: posts.username,
-    //             forumpost: posts.postText,
-    //             forumreact: posts.like,
-    //             commentcount: 2
-    //         });
-    //     }
-    // });
 
     Post.findOne({postNumber: req.params.id })
-    .populate('comments').populate('username')
+    .populate('username')
     .exec(function(err,posts){
         if(err){
             console.log(err);
