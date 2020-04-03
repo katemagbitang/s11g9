@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-
 var Schema = mongoose.Schema;
+var passportLocalMongoose = require('passport-local-mongoose');
 
   const postSchema = new Schema({
     postNumber:{
@@ -27,7 +27,8 @@ var Schema = mongoose.Schema;
     // tags:[{type: Schema.Types.ObjectId, 
     //     ref: 'Tag'}],
     reacts:{
-        type: Number
+        type: Number,
+        default: 0
     },
     comments:[{ 
         postNumber: {type: Number, required: [true,'Required']},       
@@ -37,7 +38,8 @@ var Schema = mongoose.Schema;
     }],
     status:{
         type: String,
-        enum: ['Pending','Approved']
+        enum: ['Pending','Approved'],
+        default: 'Pending'
     },
     photo:{
         type: String,
@@ -45,4 +47,5 @@ var Schema = mongoose.Schema;
     }
   });
 
+  postSchema.plugin(passportLocalMongoose);
   module.exports = mongoose.model('Post',postSchema);

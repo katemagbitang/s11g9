@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-
 var Schema = mongoose.Schema;
+var passportLocalMongoose = require('passport-local-mongoose');
 
 const userSchema = new Schema({
     username: {
@@ -30,5 +30,11 @@ const userSchema = new Schema({
         default: 'Regular'
     }
   });
+
+userSchema.plugin(passportLocalMongoose);
+userSchema.methods.validPassword = function( pwd ) {
+    return ( this.password === pwd );
+};
+
 
 module.exports = mongoose.model('User', userSchema);

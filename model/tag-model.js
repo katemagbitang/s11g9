@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-
 var Schema = mongoose.Schema;
+var passportLocalMongoose = require('passport-local-mongoose');
 
 const tagSchema = new Schema({
     tagID:{
@@ -14,4 +14,5 @@ const tagSchema = new Schema({
     }
   });
 
+tagSchema.plugin(passportLocalMongoose);
 module.exports = mongoose.model('Tag',tagSchema);
