@@ -80,10 +80,22 @@ app.get('/', function(req,res){
         if(err){
             console.log(err);
         } else{
-            res.render('index',{
-                UserLogged: false,
-                posts: posts
-            })
+            if(req.user){
+                res.render('index',{
+                    UserLogged: req.user,
+                    username: req.user.username,
+                    firstName: req.user.firstName,
+                    lastName: req.user.lastName, 
+                    email: req.user.email,
+                    posts: posts
+                })
+            }
+            else{
+                res.render('index',{
+                    UserLogged: req.user,
+                    posts: posts
+                })
+            }
         }
     }).sort( { _id : -1 } ).limit(3);
 })
@@ -93,12 +105,9 @@ app.post('/', function(req,res){
     console.log(req.body.username);
     console.log(req.body.password);
     passport.authenticate('local')(req, res, function () {
-        res.redirect('/');
+        res.redirect('/?' + req.user.username);
         console.log('login successful');
         console.log(req.session.passport.user);
-        if(req.session.passport.user){
-            UserLogged = true;
-        }
     });
 })
 
