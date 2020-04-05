@@ -19,6 +19,39 @@ Connected to MongoDB
 ```
 3. Go to http://localhost:3000/.
 
+## Running the tests
+### Register/Login/Edit Profile/Logout/Admin Options
+These features are located at the bottom of the home page, which can be accessed through the navigation bar by clicking **LOGIN** (not logged in) or **PROFILE** or scroll down at the bottom of the home page.
+#### Register as Member/User
+Click on **SIGN UP** and fill in the necessary information.
+#### Login
+Login using the username and password you used to register or choose one of the following:
+| Username | Password | Type |
+| ----------- | ----------- | ----------- |
+| carlobear | 1234 | Admin |
+| gabosaur | 1234 | Admin |
+| mamakate | asdf | Regular |
+#### Edit Profile
+Click **EDIT PROFILE** and fill in the necessary information that you would want to change.
+> This feature edits all the details of your profile, except username. To the information that you want to maintain, please type your original information.
+#### Logout
+Click **LOGOUT**.
+#### Admin Options
+Admin users have the capability to either promote a Regular user or resign an Admin user.
+##### Promote to Admin
+To be added soon.
+##### Resign as Admin
+To be added soon.
+
+### Forum
+The forum is located above the Login/Profile section, which can be accessed through the navigation bar by clicking **FORUM** or scroll down at the bottom of the home page.
+#### View a Post
+Click on any of the posts displayed on the section.
+#### View All Posts
+Click on the **View All Posts** on the section.
+#### Add discussion/post
+Only users (whether regular or admin) can post. Click on the **Add a discussion** button and fill in the necessary information.
+
 ## Dependencies
 - Body Parser
 - Express
