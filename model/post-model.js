@@ -8,6 +8,10 @@ var passportLocalMongoose = require('passport-local-mongoose');
         unique: true,
         required: [true, 'Required']
     },
+    // username: {
+    //     type: String,
+    //     required: [true, 'Required']
+    // },
     username: {
         type: Schema.Types.ObjectId,
         ref: "User",
@@ -31,16 +35,21 @@ var passportLocalMongoose = require('passport-local-mongoose');
         type: Number,
         default: 0
     },
+    commentNumber:{
+        type: Number,
+        required: [true, 'Required'],
+        default: 0
+    },
     comments:[{ 
         postNumber: {type: Number, required: [true,'Required']},       
         username: {type: String, required: [true,'Required']},
         commentText: {type: String, required: [true,'Required']},
         reacts: {type: Number, required: [true,'Required']}    
     }],
-    photo:{
-        type: String,
-        required: [true, 'Required']
-    }
+    // photo:{
+    //     type: String,
+    //     required: [true, 'Required']
+    // }
   });
 
   postSchema.plugin(passportLocalMongoose);

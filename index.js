@@ -153,7 +153,21 @@ app.get('/create_post', function(req,res){
 })
 
 app.post('/create_post', function(req,res){
-    //add post to db
+    Post.countDocuments({}, function(err,count){
+        let post = new Post({
+            postNumber: count+1,
+            username: req.session.passport.user,
+            title: req.body.dtitle,
+            postText: req.body.darticle,
+            postDate: Date.now(),
+            commentNumber: 0,
+            reacts: 0,
+        });
+        post.save();
+        console.log(post);
+        let number = count+1;
+        res.redirect('/post/'+ number);
+    })
 })
 
 app.get('/viewall_post', function(req,res){
@@ -197,7 +211,7 @@ app.get('/post/:id', function(req,res){
                     forumauthor: posts.username.username,
                     forumpost: posts.postText,
                     forumreact: posts.reacts,
-                    commentcount: 2,
+                    commentcount: posts.commentNumber,
                     username: req.user.username,
                     UserLogged: true,
                     comments: posts.comments

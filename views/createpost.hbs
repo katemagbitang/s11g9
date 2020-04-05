@@ -23,14 +23,14 @@
         <div class="signtext">
             <h2 style="color:#dbdbdb; font-size: 24px;">Always for a Just and Free Society</h2><br>
             <h4 style="color: #dbdbdb; font-size: 16px;">Add to our discussions and please be patient as the administrator will check this post before posting</h4>
-            <form style="color: #dbdbdb; margin-top: 7vh;" id="create">
+            <form style="color: #dbdbdb; margin-top: 7vh;" id="create" action="/create_post" method="POST">
                 <label>Discussion Title</label>
-                <input type="text" placeholder="Title (e.g. [Martial Law] Why many people hate Marcos?)" id="dtitle">
+                <input type="text" placeholder="Title (e.g. [Martial Law] Why many people hate Marcos?)" name="dtitle">
                 {{!-- <label>Discussion Tags (Separated by a comma)</label>
                 <input type="text" placeholder="Tags (e.g. Martial Law, Marcos, Imelda)" id="dtags"> --}}
                 <label>Article</label>
-                <textarea name="darticle" id="newarticle" placeholder="Write your discussion here...."></textarea>
-                <input type="button" class="logbutton" value="SUBMIT">
+                <textarea name="darticle" name="newarticle" placeholder="Write your discussion here...."></textarea>
+                <button type="submit" class="logbutton">SUBMIT</button>
             </form>
         </div>
     </section>
