@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{>head}}
+</head>
+<body>
+
+    <!-- HEADER MENU -->
+    {{>navbarnone}}
+    <!-- END HEADER MENU -->
+
+	<!-- ABOUT US -->
+	<section id="signup">
+        <div class="signpic"></div>
+        <div class="signtext">
+            <h2 style="color:#dbdbdb; font-size: 24px;">For a Just and Free Society</h2><br>
+            <h4 style="color: #dbdbdb; font-size: 16px;">Promote an administrator or resign</h4>
+
+            <form style="color: #dbdbdb; margin-top: 7vh;" id="sign">
+                <label>Promote an Administrator</label>
+                <select id="admin" name="Admin" style="color:#000;">
+                    {{#each users}}
+                        <option value="{{username}}">{{username}}</option>
+                    {{/each}}
+                </select>
+                <button type="submit" class="logbutton">Promote to Admin</button>
+            </form>
+
+            <form style="color: #dbdbdb;" id="sign">
+                <button type="submit" class="logbutton" style="background-color: #000; border-color: #000; margin:0;">Resign as Admin</button>
+            </form>
+
+        </div>
+    </section>
+
+</body>
+</html>

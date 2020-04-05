@@ -36,11 +36,6 @@ var passportLocalMongoose = require('passport-local-mongoose');
         commentText: {type: String, required: [true,'Required']},
         reacts: {type: Number, required: [true,'Required']}    
     }],
-    status:{
-        type: String,
-        enum: ['Pending','Approved'],
-        default: 'Pending'
-    },
     photo:{
         type: String,
         required: [true, 'Required']

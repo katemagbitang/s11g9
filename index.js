@@ -74,6 +74,12 @@ db.on('error', function(err){
     console.log(err);
 })
 
+hbs.registerHelper('ifCond', function(v1, v2, options) {
+    if(v1 === v2) {
+      return options.fn(this);
+    }
+    return options.inverse(this);
+});
 
 app.get('/', function(req,res){
     Post.find({}, function(err, posts){
@@ -86,6 +92,7 @@ app.get('/', function(req,res){
                     username: req.user.username,
                     firstName: req.user.firstName,
                     lastName: req.user.lastName, 
+                    userType: req.user.userType,
                     email: req.user.email,
                     posts: posts
                 })
@@ -105,7 +112,7 @@ app.post('/', function(req,res){
     console.log(req.body.username);
     console.log(req.body.password);
     passport.authenticate('local')(req, res, function () {
-        res.redirect('/?' + req.user.username);
+        res.redirect('/');
         console.log('login successful');
         console.log(req.session.passport.user);
     });
@@ -120,7 +127,6 @@ app.post('/signup', function(req,res){
  
     // Check if this user already exists
     let user = User.findOne({ email: req.body.email });
-    console.log(req.body.email);
     // if (user) {
     //     return res.status(400).send('That user already exists!');
     // } else {
@@ -135,6 +141,7 @@ app.post('/signup', function(req,res){
         });
         user.save();
         console.log(user);
+        res.redirect('/');
 
     // }
 
@@ -153,9 +160,19 @@ app.get('/viewall_post', function(req,res){
         if(err){
             console.log(err);
         } else{
-            res.render('viewallpost',{
-                posts: posts
-            })
+            if(req.user){
+                res.render('viewallpost',{
+                    posts: posts,
+                    UserLogged: true
+                })
+            }
+            else{
+                res.render('viewallpost',{
+                    posts: posts,
+                    UserLogged: false
+                })
+            }
+            
         }
     });
 })
@@ -168,23 +185,116 @@ app.get('/post/:id', function(req,res){
         if(err){
             console.log(err);
         } else{
-            console.log(posts.comments);
-            res.render('post',{
-                forumtitle: posts.title,
-                forumdate: posts.postDate,
-                forumauthor: posts.username.username,
-                forumpost: posts.postText,
-                forumreact: posts.like,
-                commentcount: 2,
-                comments: posts.comments
-            });
+            if(req.user){
+                res.render('post',{
+                    forumtitle: posts.title,
+                    forumdate: posts.postDate,
+                    forumauthor: posts.username.username,
+                    forumpost: posts.postText,
+                    forumreact: posts.reacts,
+                    commentcount: 2,
+                    username: req.user.username,
+                    UserLogged: true,
+                    comments: posts.comments
+                });
+            }
+            else{
+                res.render('post',{
+                    forumtitle: posts.title,
+                    forumdate: posts.postDate,
+                    forumauthor: posts.username.username,
+                    forumpost: posts.postText,
+                    forumreact: posts.reacts,
+                    commentcount: 2,
+                    UserLogged: false,
+                    comments: posts.comments
+                });
+            }
         }
     })
 })
 
 app.get('/editprofile', function(req,res){
-    res.render('editprofile',{})
+    res.render('editprofile',{
+        firstName: req.user.firstName,
+        lastName: req.user.lastName,
+        email: req.user.email,
+        password: req.user.password
+    })
 })
+
+app.post('/editprofile', function(req,res){
+        // let user = User.findByIdAndUpdate(req.session.passport.user, {
+        //     firstName: req.body.firstname,
+        //     lastName: req.body.lastname,
+        //     email: req.body.email,
+        //     username: req.user.username,
+        //     password: req.body.password,
+        //     userType: req.user.userType
+        // },{new:true,upsert:true}).then(
+        //     console.log('Successful')
+        // );
+        
+
+        // user = new User({
+        //     _id: req.session.passport.user,
+        //     firstName: req.body.firstname,
+        //     lastName: req.body.lastname,
+        //     email: req.body.email,
+        //     username: req.user.username,
+        //     password: req.body.password,
+        //     userType: req.user.userType,
+        // });
+
+        User.findOneAndUpdate({_id: req.session.passport.user},{
+                _id: req.session.passport.user,
+                firstName: req.body.firstname,
+                lastName: req.body.lastname,
+                email: req.body.email,
+                username: req.user.username,
+                password: req.body.password,
+                userType: req.user.userType,
+        },{upsert:true, new:true}, function(err, found){
+            if(err){
+                console.log(err);
+            }
+            else{
+                console.log('User Updated');
+                res.redirect('/');
+            }
+        })
+
+        // var id =  req.session.passport.user;
+        // User.findOne({_id: id}, function(err,found){
+        //     if(err){
+        //         console.log(err);
+        //     }
+        //     else{
+        //         if(req.body.firstName){
+        //             found.firstName = req.body.firstname
+        //         }
+        //         if(req.body.lastname)
+        //     }
+        // })
+    //username update on all posts containing previous username
+})
+
+app.get('/adminpromotion', function(req,res){
+    User.find({userType: "Regular"}, function(err, users){
+        if(err){
+            console.log(err);
+        } else{
+            res.render('adminpromotion',{
+                users: users
+            })
+        }
+    })
+})
+
+app.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+});
 
 app.listen(port, function(){
     console.log('App listening at port ' + port)

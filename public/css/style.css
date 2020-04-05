@@ -494,6 +494,8 @@ section#forum{
 
 .newcommentform{
   width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 .vote {
   display: flex;

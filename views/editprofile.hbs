@@ -15,18 +15,16 @@
         <div class="signtext">
             <h2 style="color:#dbdbdb; font-size: 24px;">Change is Inevitable</h2><br>
             <h4 style="color: #dbdbdb; font-size: 16px;">Edit your profile details here</h4>
-            <form style="color: #dbdbdb; margin-top: 7vh;" id="sign">
+            <form style="color: #dbdbdb; margin-top: 7vh;" id="sign" action="/editprofile" method="POST">
                 <label>First Name*</label>
-                <input type="text" placeholder="First Name" id="firstname">
+                <input type="text" placeholder="First Name" name="firstname" value="{{firstName}}">
                 <label>Last Name*</label>
-                <input type="text" placeholder="Last Name" id="lastname">
+                <input type="text" placeholder="Last Name" name="lastname" value="{{lastName}}">
                 <label>Email*</label>
-                <input type="email" placeholder="*@dlsu.edu.ph" id="email">
-                <label>Username* (4-32 characters)</label>
-                <input type="text" placeholder="e.g. cutesicarlo" id="username">
+                <input type="email" placeholder="*@dlsu.edu.ph" name="email" value="{{email}}">
                 <label>Password* (4-32 characters)</label>
-                <input type="password" placeholder="Password" id="password">
-                <input type="button" class="logbutton" value="SAVE CHANGES">
+                <input type="password" placeholder="Password" name="password" value="{{password}}">
+                <button type="submit" class="logbutton">CONFIRM CHANGES</button>
             </form>
         </div>
     </section>

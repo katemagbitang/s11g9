@@ -12,5 +12,14 @@
             <label style="font-family: 'Lato';font-weight: 800;">Email: </label> {{email}}
             <br>
             <a href="/editprofile"><input type="button" class="logbutton" value="EDIT PROFILE"></a>
+            {{#ifCond userType "Admin"}}
+            <br>
+            <br>
+            <a href="/adminpromotion"><input type="button" class="logbutton" value="ADMIN OPTIONS"></a>
+            {{/ifCond}}
+            <br>
+            <br>
+            <a href="/logout"><input type="button" class="logbutton" value="LOGOUT"></a>
     </div>
+    
 </section>
