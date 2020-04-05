@@ -22,7 +22,8 @@ var passportLocalMongoose = require('passport-local-mongoose');
         required: [true, 'Required']
     },
     postDate: {
-        type : { type: Date, default: Date.now() }
+        type : Date,
+        required: [true, 'Required']
     },
     // tags:[{type: Schema.Types.ObjectId, 
     //     ref: 'Tag'}],
