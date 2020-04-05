@@ -9,7 +9,7 @@ This a forum website for the oldest political organization of De La Salle Univer
 #### Setting up the database
 1. Run **mongod.exe**.
 2. Make a DB named **nodekb** in MongoDB Compass.
-3. Import the JSON files using MongoDB Compass the three collections found in `\model` with the respective names: nodekb-users, nodekb-posts, nodekb-comments.
+3. Import the JSON files using MongoDB Compass found in `\model` with the respective names: nodekb-users, and nodekb-posts.
 ### Project Folder
 1. Install dependencies on the **project** command line: `npm install`
 2. Run index.js by executing `node index.js` on the command line. You should see the following:
