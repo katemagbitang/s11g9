@@ -1,29 +1,3 @@
 <section id="intro">
-		<ul id="demo1">
-			<li><a href="#slide1" class="inactiveLink"><img src="../../img/slide/1.jpg"></a></li>
-			<li><a href="#slide2" class="inactiveLink"><img src="../../img/slide/2.jpg"></a></li>
-			<li><a href="#slide3" class="inactiveLink"><img src="../../img/slide/3.jpg"></a></li>
-			<li><a href="#slide4" class="inactiveLink"><img src="../../img/slide/4.jpg"></a></li>
-			<li><a href="#slide5" class="inactiveLink"><img src="../../img/slide/6.jpg"></a></li>
-			<li><a href="#slide6" class="inactiveLink"><img src="../../img/slide/1.png"></a></li>
-		</ul>
+	<a href="#slide1" class="inactiveLink"><img src="../../img/GE2019.jpg"></a>	
 </section>
-
-<script>
-    $(function() {
-        var demo1 = $("#demo1").slippry({
-            // transition: 'vertical',
-            // useCSS: true,
-            // speed: 1000,
-            // pause: 3000,
-            // auto: true,
-            // preload: 'visible',
-            // autoHover: false
-        });	});
-
-    $(".sliding-link").click(function(e) {
-        e.preventDefault();
-        var aid = $(this).attr("href");
-        $('html,body').animate({scrollTop: $(aid).offset().top},'slow');
-    });
-</script>
