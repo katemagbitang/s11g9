@@ -2,6 +2,7 @@ const express=require('express')
 const hbs = require("hbs")
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const moment = require('moment')
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 const app = express()
@@ -176,6 +177,10 @@ app.get('/viewall_post', function(req,res){
         }
     });
 })
+
+hbs.registerHelper('memoryDateFormat', function(date) {
+    return moment(date).format("DD-MMM-YYYY");
+});
 
 app.get('/post/:id', function(req,res){
 
