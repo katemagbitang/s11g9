@@ -164,7 +164,7 @@ app.post('/create_post', function(req,res){
             reacts: 0,
         });
         post.save();
-        console.log(post);
+        console.log('Post Added');
         let number = count+1;
         res.redirect('/post/'+ number);
     })
