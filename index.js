@@ -224,27 +224,6 @@ app.get('/editprofile', function(req,res){
 })
 
 app.post('/editprofile', function(req,res){
-        // let user = User.findByIdAndUpdate(req.session.passport.user, {
-        //     firstName: req.body.firstname,
-        //     lastName: req.body.lastname,
-        //     email: req.body.email,
-        //     username: req.user.username,
-        //     password: req.body.password,
-        //     userType: req.user.userType
-        // },{new:true,upsert:true}).then(
-        //     console.log('Successful')
-        // );
-        
-
-        // user = new User({
-        //     _id: req.session.passport.user,
-        //     firstName: req.body.firstname,
-        //     lastName: req.body.lastname,
-        //     email: req.body.email,
-        //     username: req.user.username,
-        //     password: req.body.password,
-        //     userType: req.user.userType,
-        // });
 
         User.findOneAndUpdate({_id: req.session.passport.user},{
                 _id: req.session.passport.user,

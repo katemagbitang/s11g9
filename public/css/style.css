@@ -474,7 +474,6 @@ section#forum{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-weight: 800;
   height: 100%;
   width: 40vh;
 }
