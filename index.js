@@ -128,10 +128,6 @@ app.post('/', function(req,res){
     });
 })
 
-// app.get('/signup', function(req,res){
-//     res.render('registration',{})
-// })
-
 // app.post('/signup', function(req,res){
 //     // First Validate The Request
  
@@ -157,9 +153,6 @@ app.post('/', function(req,res){
 
 // })
 
-// app.get('/create_post', function(req,res){
-//     res.render('createpost',{})
-// })
 
 app.post('/create_post', function(req,res){
     Post.countDocuments({}, function(err,count){
@@ -242,14 +235,6 @@ app.get('/post/:id', function(req,res){
     })
 })
 
-app.get('/editprofile', function(req,res){
-    res.render('editprofile',{
-        firstName: req.user.firstName,
-        lastName: req.user.lastName,
-        email: req.user.email,
-        password: req.user.password
-    })
-})
 
 app.post('/editprofile', function(req,res){
 

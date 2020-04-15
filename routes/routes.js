@@ -21,4 +21,6 @@ app.post('/signup', registerController.postRegistration);
 
 app.get('/create_post', postController.createPost);
 
+app.get('/editprofile', userController.editProfile);
+
 module.exports = app;
