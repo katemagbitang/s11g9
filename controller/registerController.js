@@ -18,7 +18,7 @@ const registerController = {
     */
     postRegistration: function (req, res) {
 
-        var firstName = req.body.firstname;
+        var firstName = req.body.firstame;
         var lastName = req.body.lastname;
         var email = req.body.email;
         var username = req.body.username;
@@ -26,12 +26,12 @@ const registerController = {
         var userType = 'Regular';
         
         var user = {
-            firstName : firstname,
-            lastName : lastname,
+            firstName : firstName,
+            lastName : lastName,
             email : email,
             username : username,
-            password = password,
-            userType = userType
+            password : password,
+            userType : userType
         }
         
         db.insertOne(User, user, function(flag) {
@@ -73,4 +73,4 @@ const registerController = {
     exports the object `signupController` (defined above)
     when another script exports from this file
 */
-module.exports = signupController;
+module.exports = registerController;

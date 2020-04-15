@@ -5,7 +5,7 @@ const controller = require('../controller/controller.js');
 
 const registerController = require('../controller/registerController.js');
 
-// const successController = require('../controllers/successController.js');
+const createPostController = require('../controllers/createPostController.js');
 
 // const profileController = require('../controllers/profileController.js');
 
@@ -18,3 +18,7 @@ app.get('/', controller.getIndex);
 app.get('/signup', registerController.getRegistration);
 
 app.post('/signup', registerController.postRegistration);
+
+app.get('/create_post', createPostController.getCreatePost);
+
+module.exports = app;

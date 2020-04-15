@@ -128,11 +128,15 @@ app.post('/', function(req,res){
     });
 })
 
-/* in routes now hopefully
-app.get('/signup', function(req,res){
-    res.render('registration',{})
-})
+//done
+// app.get('/signup', function(req,res){
+//     res.render('registration',{})
+// })
+// app.get('/create_post', function(req,res){
+//     res.render('createpost',{})
+// })
 
+/* in routes now hopefully
 app.post('/signup', function(req,res){
     // First Validate The Request
  
@@ -158,9 +162,7 @@ app.post('/signup', function(req,res){
 
 })
 */
-app.get('/create_post', function(req,res){
-    res.render('createpost',{})
-})
+
 
 app.post('/create_post', function(req,res){
     Post.countDocuments({}, function(err,count){
