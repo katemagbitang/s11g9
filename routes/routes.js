@@ -5,9 +5,9 @@ const controller = require('../controller/controller.js');
 
 const registerController = require('../controller/registerController.js');
 
-const createPostController = require('../controllers/createPostController.js');
+const postController = require('../controller/postController.js');
 
-// const profileController = require('../controllers/profileController.js');
+const userController = require('../controller/userController.js');
 
 const app = express();
 
@@ -19,6 +19,6 @@ app.get('/signup', registerController.getRegistration);
 
 app.post('/signup', registerController.postRegistration);
 
-app.get('/create_post', createPostController.getCreatePost);
+app.get('/create_post', postController.createPost);
 
 module.exports = app;

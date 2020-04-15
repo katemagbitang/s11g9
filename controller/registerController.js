@@ -18,55 +18,33 @@ const registerController = {
     */
     postRegistration: function (req, res) {
 
-        var firstName = req.body.firstame;
-        var lastName = req.body.lastname;
-        var email = req.body.email;
-        var username = req.body.username;
-        var password = req.body.password;
-        var userType = 'Regular';
-        
-        var user = {
-            firstName : firstName,
-            lastName : lastName,
-            email : email,
-            username : username,
-            password : password,
-            userType : userType
-        }
-        
-        db.insertOne(User, user, function(flag) {
-            if(flag) {
-                res.redirect('/');
-            }
-        });
+        // First Validate The Request
+ 
+        // Check if this user already exists
+        let user = User.findOne({ email: req.body.email });
+        // if (user) {
+        //     return res.status(400).send('That user already exists!');
+        // } else {
+            // Insert the new user if they do not exist yet
+            user = new User({
+                firstName: req.body.firstname,
+                lastName: req.body.lastname,
+                email: req.body.email,
+                username: req.body.username,
+                password: req.body.password,
+                userType: 'Regular'
+            });
+            user.save();
+            console.log(user);
+            res.redirect('/');
+
+        // }
     },
 
     /*
         executed when the client sends an HTTP GET request `/getCheckID`
         as defined in `../routes/routes.js`
     */
-    getCheckID: function (req, res) {
-
-        /*
-            when passing values using HTTP GET method
-            the values are stored in `req.query` object
-            Example url: `http://localhost/getCheckID?idNum=11312345`
-            To retrieve the value of parameter `idNum`: `req.query.idNum`
-        */
-        var idNum = req.query.idNum;
-
-        /*
-            calls the function findOne()
-            defined in the `database` object in `../models/db.js`
-            searches for a single document based on the model `User`
-            sends an empty string to the user if there are no match
-            otherwise, sends an object containing the `idNum`
-        */
-        db.findOne(User, {idNum: idNum}, 'idNum', function (result) {
-            res.send(result);
-        });
-    }
-
 }
 
 /*
