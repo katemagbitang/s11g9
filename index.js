@@ -15,11 +15,6 @@ const port = 3000
 
 mongoose.Promise = global.Promise;
 
-//Models
-// let Post = require('./model/post-model');
-// let Comment = require('./model/comment-model');
-// let User = require('./model/user-model');
-
 app.set('view engine', 'hbs')
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -32,57 +27,15 @@ app.use('/', routes);
 
 db.connect();
 
-//use sessions for tracking logins
-// app.use(require('express-session')({
-//     secret: 'keyboard cat',
-//     resave: false,
-//     saveUninitialized: false
-// }));
-// app.use(passport.initialize());
-// app.use(passport.session());
+// use sessions for tracking logins
+app.use(require('express-session')({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false
+}));
 
-// //passport configuration
-// passport.use(new LocalStrategy(
-//     // User.authenticate()
-//     function(username, password, done) {
-//         User.findOne({ username: username }, function (err, user) {
-//           if (err) { return done(err); }
-//           if (!user) {
-//             console.log('Incorrect Username');
-//             return done(null, false, { message: 'Incorrect username.' });
-//           }
-//           if (!user.validPassword(password)) {
-//             console.log('Incorrect Password');
-//             return done(null, false, { message: 'Incorrect password.' });
-//           }
-//           return done(null, user);
-//         });
-//     }
-// ));
-// // passport.serializeUser(User.serializeUser());
-// // passport.deserializeUser(User.deserializeUser());
-// passport.serializeUser(function(user, done) {
-//     done(null, user.id);
-// });
-
-// passport.deserializeUser(function(id, done) {
-//     User.findById(id, function(err, user) {
-//         done(err, user);
-//     });
-// });
-
-// mongoose.connect('mongodb://localhost/nodekb', {useNewUrlParser: true, useUnifiedTopology: true});
-// var db = mongoose.connection;
-
-// //check connection
-// db.once('open', function(){
-//     console.log('Connected to MongoDB');
-// });
-
-// //check for db errors
-// db.on('error', function(err){
-//     console.log(err);
-// })
+app.use(passport.initialize());
+app.use(passport.session());
 
 hbs.registerHelper('ifCond', function(v1, v2, options) {
     if(v1 === v2) {

@@ -1,21 +1,13 @@
-const db = require('../model/db.js');
+// const db = require('../model/db.js');
 
 const User = require('../model/user-model.js');
 
 const registerController = {
 
-    /*
-        executed when the client sends an HTTP GET request `/signup`
-        as defined in `../routes/routes.js`
-    */
     getRegistration: function (req, res) {
         res.render('registration');
     },
 
-    /*
-        executed when the client sends an HTTP POST request `/signup`
-        as defined in `../routes/routes.js`
-    */
     postRegistration: function (req, res) {
 
         // First Validate The Request
@@ -40,15 +32,6 @@ const registerController = {
 
         // }
     },
-
-    /*
-        executed when the client sends an HTTP GET request `/getCheckID`
-        as defined in `../routes/routes.js`
-    */
 }
 
-/*
-    exports the object `signupController` (defined above)
-    when another script exports from this file
-*/
 module.exports = registerController;
