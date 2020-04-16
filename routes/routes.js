@@ -15,12 +15,28 @@ app.get('/favicon.ico', controller.getFavicon);
 
 app.get('/', controller.getIndex);
 
+app.get('/', userController.getUser);
+
+app.post('/', userController.login);
+
 app.get('/signup', registerController.getRegistration);
 
 app.post('/signup', registerController.postRegistration);
 
-app.get('/create_post', postController.createPost);
+app.get('/logout', userController.logout);
 
-app.get('/editprofile', userController.editProfile);
+app.get('/create_post', postController.getCreatePost);
+
+app.get('/editprofile', userController.getEditProfile);
+
+app.get('/adminpromotion', userController.editAdmin);
+
+app.post('/create_post', postController.postCreatePost);
+
+app.get('/viewall_post', postController.viewAllPost);
+
+app.post('/editprofile', userController.postEditProfile);
+
+app.get('/post/:id', postController.viewPost);
 
 module.exports = app;
