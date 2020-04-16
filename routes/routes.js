@@ -9,7 +9,7 @@ const postController = require('../controller/postController.js');
 
 const userController = require('../controller/userController.js');
 
-const passport = require('../helpers/passport.js');
+// const passport = require('../helpers/passport.js');
 
 const app = express();
 

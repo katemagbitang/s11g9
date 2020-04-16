@@ -21,14 +21,6 @@ mongoose.Promise = global.Promise;
 app.set('view engine', 'hbs')
 
 hbs.registerPartials(__dirname + '/views/partials');
-//static
-app.use(express.static(__dirname + '/public'));
-//body parser
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use('/', routes);
-
-db.connect();
 
 // use sessions for tracking logins
 app.use(require('express-session')({
@@ -50,6 +42,15 @@ hbs.registerHelper('ifCond', function(v1, v2, options) {
 hbs.registerHelper('memoryDateFormat', function(date) {
     return moment(date).format("DD-MMM-YYYY");
 });
+
+//static
+app.use(express.static(__dirname + '/public'));
+//body parser
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('/', routes);
+
+db.connect();
 
 app.listen(port, function(){
     console.log('App listening at port ' + port)
