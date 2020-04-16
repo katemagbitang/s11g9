@@ -1,5 +1,8 @@
 const express = require('express');
 
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+
 // import module `controller` from `../controllers/controller.js`
 const controller = require('../controller/controller.js');
 
@@ -10,6 +13,37 @@ const postController = require('../controller/postController.js');
 const userController = require('../controller/userController.js');
 
 const app = express();
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(
+    // User.authenticate()
+    function(username, password, done) {
+        User.findOne({ username: username }, function (err, user) {
+          if (err) { return done(err); }
+          if (!user) {
+            console.log('Incorrect Username');
+            return done(null, false, { message: 'Incorrect username.' });
+          }
+          if (!user.validPassword(password)) {
+            console.log('Incorrect Password');
+            return done(null, false, { message: 'Incorrect password.' });
+          }
+          return done(null, user);
+        });
+    }
+));
+
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+        done(err, user);
+    });
+});
 
 app.get('/favicon.ico', controller.getFavicon);
 
