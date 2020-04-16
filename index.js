@@ -37,6 +37,36 @@ app.use(require('express-session')({
 app.use(passport.initialize());
 app.use(passport.session());
 
+//passport configuration
+passport.use(new LocalStrategy(
+    // User.authenticate()
+    function(username, password, done) {
+        User.findOne({ username: username }, function (err, user) {
+          if (err) { return done(err); }
+          if (!user) {
+            console.log('Incorrect Username');
+            return done(null, false, { message: 'Incorrect username.' });
+          }
+          if (!user.validPassword(password)) {
+            console.log('Incorrect Password');
+            return done(null, false, { message: 'Incorrect password.' });
+          }
+          return done(null, user);
+        });
+    }
+));
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+        done(err, user);
+    });
+});
+
 hbs.registerHelper('ifCond', function(v1, v2, options) {
     if(v1 === v2) {
       return options.fn(this);
