@@ -1,6 +1,6 @@
 // const db = require('../model/db.js');
 
-var passport = require('passport');
+const passport = require('passport');
 
 const User = require('../model/user-model.js');
 const Post = require('../model/model-schema.js');
@@ -76,14 +76,19 @@ const userController ={
     },
 
     login : function(req,res){
-        console.log('click');
-        console.log(req.body.username);
-        console.log(req.body.password);
-        passport.authenticate('local')(req, res, function () {
-            res.redirect('/');
-            console.log('login successful');
-            console.log(req.session.passport.user);
-        });
+        // console.log('click');
+        // console.log(req.body.username);
+        // console.log(req.body.password);
+        // passport.authenticate('local')(req, res, function () {
+        //     res.redirect('/');
+        //     console.log('login successful');
+        //     console.log(req.session.passport.user);
+        // });
+
+        passport.authenticate('local',{
+            successRedirect: '/home',
+            failureRedirect: '/'
+        })(req,res);
     },
 
     logout : function(req, res){

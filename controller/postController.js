@@ -1,5 +1,6 @@
 // const db = require('../model/db.js');
 
+const User = require('../model/user-model');
 const Post = require('../model/model-schema.js');
 
 const postController ={

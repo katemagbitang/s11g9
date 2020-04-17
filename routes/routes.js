@@ -17,7 +17,7 @@ app.get('/favicon.ico', controller.getFavicon);
 
 app.get('/', controller.getIndex);
 
-app.get('/', userController.getUser);
+app.get('/home', userController.getUser);
 
 app.post('/', userController.login);
 
