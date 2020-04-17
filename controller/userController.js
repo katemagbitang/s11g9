@@ -58,7 +58,7 @@ const userController ={
             }
             else{
                 console.log('User Updated');
-                res.redirect('/');
+                res.redirect('/home');
             }
         })
     },
