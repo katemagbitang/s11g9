@@ -1,2 +1,0 @@
-{"_id":{"$oid":"5e7838ae23349633c07fc979"},"username":"carlobear","password":"1234","firstName":"Carlo","lastName":"santos","email":"carlo_luis_v_santos@dlsu.edu.ph","userType":"Admin"}
-{"_id":{"$oid":"5e7849d123349633c07fc97b"},"username":"gabosaur","password":"1234","firstName":"Gabriel","lastName":"Marcelo","email":"gabo_marcelo@dlsu.edu.ph","userType":"Admin"}
