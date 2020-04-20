@@ -125,7 +125,7 @@ const postController ={
         })
     },
 
-    postComment = function(req,res){
+    postComment: function(req,res){
 
         console.log(req.session.passport.user);
     
@@ -149,7 +149,7 @@ const postController ={
     
     },
 
-    getEditPost = function(req,res){
+    getEditPost: function(req,res){
         Post.findOne({_id:req.params.id}, function(err,doc){
             res.render('editpost',{
                 title: doc.title,
@@ -159,7 +159,7 @@ const postController ={
         })
     },
 
-    postEditPost = function(req,res){
+    postEditPost: function(req,res){
         Post.findOneAndUpdate({ _id: req.params.id}, {
             title: req.body.dtitle,
             postText: req.body.darticle,
@@ -174,7 +174,7 @@ const postController ={
         })
     },
 
-    getDeletePost = function(req,res){
+    getDeletePost: function(req,res){
         Post.findOneAndDelete({postNumber: req.params.id}, function(err){
             if(err){
                 console.log(err);
@@ -186,7 +186,7 @@ const postController ={
         })
     },
 
-    getDeleteComment = function(req,res){
+    getDeleteComment: function(req,res){
         Post.findOneAndUpdate({postNumber: req.params.id},{$inc: {commentNumber: -1}} ,function(err, doc){
             if(err){
                 console.log(err)

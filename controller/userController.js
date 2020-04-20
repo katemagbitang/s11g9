@@ -63,7 +63,7 @@ const userController ={
         })
     },
 
-    editAdmin : function(req,res){
+    getEditAdmin : function(req,res){
         User.find({userType: "Regular"}, function(err, users){
             if(err){
                 console.log(err);
@@ -75,7 +75,7 @@ const userController ={
         })
     },
 
-    postEditAdmin = function(req,res){
+    postEditAdmin: function(req,res){
         User.findOneAndUpdate({username: req.body.admin}, {
             userType: "Admin"
         }, function(err,found){
@@ -88,7 +88,7 @@ const userController ={
             }
         })
     },
-    postResignAdmin = function(req,res){
+    postResignAdmin: function(req,res){
         User.findOneAndUpdate({_id: req.session.passport.user}, {
             userType: "Regular"
         }, function(err,found){

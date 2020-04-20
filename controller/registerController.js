@@ -58,7 +58,7 @@ const registerController = {
         res.redirect('/');
     },
 
-    getConfirmation = function(req,res){
+    getConfirmation: function(req,res){
         // Find a matching token
         Token.findOne({ token: req.params.token }, function (err, token) {
             if (!token) return res.status(400).send({ type: 'not-verified', msg: 'We were unable to find a valid token. Your token my have expired.' });

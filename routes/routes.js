@@ -33,7 +33,7 @@ app.get('/create_post', postController.getCreatePost);
 
 app.get('/editprofile', userController.getEditProfile);
 
-app.get('/adminpromotion', userController.editAdmin);
+app.get('/adminpromotion', userController.getEditAdmin);
 
 app.post('/adminpromotion', userController.postEditAdmin);
 
