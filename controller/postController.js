@@ -60,7 +60,7 @@ const postController ={
                     res.render('post',{
                         forumtitle: posts.title,
                         forumdate: posts.postDate,
-                        forumauthor: posts.username.username,
+                        forumauthor: posts.username, //nothing is posted
                         forumpost: posts.postText,
                         forumreact: posts.reacts,
                         commentcount: posts.commentNumber,
@@ -73,7 +73,7 @@ const postController ={
                     res.render('post',{
                         forumtitle: posts.title,
                         forumdate: posts.postDate,
-                        forumauthor: posts.username.username,
+                        forumauthor: posts.username,//nothing is posted
                         forumpost: posts.postText,
                         forumreact: posts.reacts,
                         commentcount: 2,
