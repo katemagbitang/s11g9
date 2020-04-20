@@ -18,7 +18,7 @@
 
             <form style="color: #dbdbdb; margin-top: 7vh;" id="sign" action="/adminpromotion" method="POST">
                 <label>Promote an Administrator</label>
-                <select id="admin" name="Admin" style="color:#000;">
+                <select name="admin" style="color:#000;">
                     {{#each users}}
                         <option value="{{username}}">{{username}}</option>
                     {{/each}}
