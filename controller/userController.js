@@ -75,6 +75,33 @@ const userController ={
         })
     },
 
+    postEditAdmin = function(req,res){
+        User.findOneAndUpdate({username: req.body.admin}, {
+            userType: "Admin"
+        }, function(err,found){
+            if(err){
+                console.log(err);
+            }
+            else{
+                console.log('User is an Admin');
+                res.redirect('/adminpromotion');
+            }
+        })
+    },
+    postResignAdmin = function(req,res){
+        User.findOneAndUpdate({_id: req.session.passport.user}, {
+            userType: "Regular"
+        }, function(err,found){
+            if(err){
+                console.log(err);
+            }
+            else{
+                console.log('User is a Regular');
+                res.redirect('/home');
+            }
+        })
+    },
+
     login : function(req,res){
         // console.log('click');
         // console.log(req.body.username);

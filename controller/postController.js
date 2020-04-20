@@ -1,17 +1,34 @@
 // const db = require('../model/db.js');
 
 const Post = require('../model/post-model.js');
+const Count = require('../model/count-model');
 
 const postController ={
     
     getCreatePost : function(req,res){
-        res.render('createpost');
+        res.render('createpost',{});
     },
 
     postCreatePost : function(req,res){
-        Post.countDocuments({}, function(err,count){
+        // Post.countDocuments({}, function(err,count){
+        //     let post = new Post({
+        //         postNumber: count+1,
+        //         username: req.session.passport.user,
+        //         title: req.body.dtitle,
+        //         postText: req.body.darticle,
+        //         postDate: Date.now(),
+        //         commentNumber: 0,
+        //         reacts: 0,
+        //     });
+        //     post.save();
+        //     console.log('Post Added');
+        //     let number = count+1;
+        //     res.redirect('/post/'+ number);
+        // })
+
+        Count.findOneAndUpdate({identity: "counter"},{$inc: {numberPost: 1}},function(err,number){
             let post = new Post({
-                postNumber: count+1,
+                postNumber: number.numberPost+1,
                 username: req.session.passport.user,
                 title: req.body.dtitle,
                 postText: req.body.darticle,
@@ -21,8 +38,7 @@ const postController ={
             });
             post.save();
             console.log('Post Added');
-            let number = count+1;
-            res.redirect('/post/'+ number);
+            res.redirect('/viewall_post/');
         })
     },
     viewAllPost : function(req,res){
@@ -59,7 +75,7 @@ const postController ={
                     res.render('post',{
                         forumtitle: posts.title,
                         forumdate: posts.postDate,
-                        forumauthor: posts.username.username, //nothing is posted
+                        forumauthor: posts.username.username, 
                         forumpost: posts.postText,
                         forumreact: posts.reacts,
                         commentcount: posts.commentNumber,
@@ -73,7 +89,7 @@ const postController ={
                     res.render('post',{
                         forumtitle: posts.title,
                         forumdate: posts.postDate,
-                        forumauthor: posts.username.username,//nothing is posted
+                        forumauthor: posts.username.username,
                         forumpost: posts.postText,
                         forumreact: posts.reacts,
                         commentcount: 2,
@@ -83,6 +99,101 @@ const postController ={
                     });
                 }
             }
+        })
+    },
+
+    search : function(req,res){
+        var allposts = Post.find({}, function(err,docs){
+            if(err){
+                console.log(err);
+            }
+        })
+    
+        allposts.find({title: {$regex: req.body.search, $options: "i"}}, function(err,docs){
+            if(req.user){
+                res.render('viewallpost',{
+                    posts: docs,
+                    UserLogged: true
+                })
+            }
+            else{
+                res.render('viewallpost',{
+                    posts: docs,
+                    UserLogged: false
+                })
+            }
+        })
+    },
+
+    postComment = function(req,res){
+
+        console.log(req.session.passport.user);
+    
+        var objComment = {
+            postNumber: req.params.id,
+            username: req.user.username,
+            commentText: req.body.newcom,
+            reacts: 0
+        };
+    
+        Post.findOneAndUpdate({postNumber: req.params.id}, {$inc: {commentNumber: 1}} ,function(err,doc){
+            if(err){
+                console.log(err);
+            }
+            
+            doc.comments.push(objComment);
+            console.log('Comment Posted');
+            doc.save();
+            res.redirect('/post/'+req.params.id);
+        });
+    
+    },
+
+    getEditPost = function(req,res){
+        Post.findOne({_id:req.params.id}, function(err,doc){
+            res.render('editpost',{
+                title: doc.title,
+                postText: doc.postText,
+                id: req.params.id
+            });
+        })
+    },
+
+    postEditPost = function(req,res){
+        Post.findOneAndUpdate({ _id: req.params.id}, {
+            title: req.body.dtitle,
+            postText: req.body.darticle,
+        }, function(err,found){
+            if(err){
+                console.log(err);
+            }
+            else{
+                console.log('Post Updated');
+                res.redirect('/viewall_post');
+            }
+        })
+    },
+
+    getDeletePost = function(req,res){
+        Post.findOneAndDelete({postNumber: req.params.id}, function(err){
+            if(err){
+                console.log(err);
+            }
+            else{
+                console.log("Post Deleted");
+                res.redirect('/viewall_post');
+            }
+        })
+    },
+
+    getDeleteComment = function(req,res){
+        Post.findOneAndUpdate({postNumber: req.params.id},{$inc: {commentNumber: -1}} ,function(err, doc){
+            if(err){
+                console.log(err)
+            }
+            doc.comments.pull({_id: req.params.text});
+            doc.save();
+            res.redirect('/post/'+req.params.id);
         })
     }
 }
