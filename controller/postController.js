@@ -1,7 +1,6 @@
 // const db = require('../model/db.js');
 
-const User = require('../model/user-model');
-const Post = require('../model/model-schema.js');
+const Post = require('../model/post-model.js');
 
 const postController ={
     
@@ -60,11 +59,12 @@ const postController ={
                     res.render('post',{
                         forumtitle: posts.title,
                         forumdate: posts.postDate,
-                        forumauthor: posts.username, //nothing is posted
+                        forumauthor: posts.username.username, //nothing is posted
                         forumpost: posts.postText,
                         forumreact: posts.reacts,
                         commentcount: posts.commentNumber,
                         username: req.user.username,
+                        id: posts._id,
                         UserLogged: true,
                         comments: posts.comments
                     });
@@ -73,10 +73,11 @@ const postController ={
                     res.render('post',{
                         forumtitle: posts.title,
                         forumdate: posts.postDate,
-                        forumauthor: posts.username,//nothing is posted
+                        forumauthor: posts.username.username,//nothing is posted
                         forumpost: posts.postText,
                         forumreact: posts.reacts,
                         commentcount: 2,
+                        id: posts._id,
                         UserLogged: false,
                         comments: posts.comments
                     });

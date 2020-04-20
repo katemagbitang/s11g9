@@ -3,7 +3,7 @@
 const passport = require('passport');
 
 const User = require('../model/user-model.js');
-const Post = require('../model/model-schema.js');
+const Post = require('../model/post-model.js');
 
 const userController ={
    
