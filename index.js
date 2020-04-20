@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const moment = require('moment')
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
+// var LocalStrategy = require('passport-local').Strategy;
 
 const routes = require('./routes/routes.js');
 
@@ -17,6 +17,8 @@ const port = 3000
 require('./helpers/passport')(passport);
 
 mongoose.Promise = global.Promise;
+
+mongoose.set('useCreateIndex', true)
 
 app.set('view engine', 'hbs')
 
