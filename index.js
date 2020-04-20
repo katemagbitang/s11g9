@@ -5,9 +5,9 @@ const bodyParser = require('body-parser')
 const moment = require('moment')
 var passport = require('passport');
 // var LocalStrategy = require('passport-local').Strategy;
-var crypto = require('crypto');
-var nodemailer = require('nodemailer');
-const Bcrypt = require("bcryptjs");
+// var crypto = require('crypto');
+// var nodemailer = require('nodemailer');
+// const Bcrypt = require("bcryptjs");
 
 const routes = require('./routes/routes.js');
 
