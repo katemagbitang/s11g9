@@ -73,6 +73,7 @@ const postController ={
             } else{
                 if(req.user){
                     res.render('post',{
+                        postNumber: posts.postNumber,
                         forumtitle: posts.title,
                         forumdate: posts.postDate,
                         forumauthor: posts.username.username, 
