@@ -15,9 +15,9 @@ const app = express();
 
 app.get('/favicon.ico', controller.getFavicon);
 
-app.get('/', controller.getIndex);
+// app.get('/', controller.getIndex);
 
-app.get('/home', userController.getUser);
+app.get('/', userController.getUser);
 
 app.post('/', userController.login);
 

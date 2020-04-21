@@ -58,7 +58,7 @@ const userController ={
             }
             else{
                 console.log('User Updated');
-                res.redirect('/home');
+                res.redirect('/');
             }
         })
     },
@@ -97,7 +97,7 @@ const userController ={
             }
             else{
                 console.log('User is a Regular');
-                res.redirect('/home');
+                res.redirect('/');
             }
         })
     },
@@ -106,16 +106,16 @@ const userController ={
         // console.log('click');
         // console.log(req.body.username);
         // console.log(req.body.password);
-        // passport.authenticate('local')(req, res, function () {
-        //     res.redirect('/');
-        //     console.log('login successful');
-        //     console.log(req.session.passport.user);
-        // });
+        passport.authenticate('local')(req, res, function () {
+            res.redirect('/');
+            console.log('login successful');
+            console.log(req.session.passport.user);
+        });
 
-        passport.authenticate('local',{
-            successRedirect: '/home',
-            failureRedirect: '/'
-        })(req,res);
+        // passport.authenticate('local',{
+        //     successRedirect: '/home',
+        //     failureRedirect: '/'
+        // })(req,res);
     },
 
     logout : function(req, res){
